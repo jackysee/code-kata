@@ -2,3 +2,4 @@ code-kata
 =========
 
 * WordWrap
+* FizzBuzz
