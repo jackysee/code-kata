@@ -17,12 +17,15 @@ var WordWrap = {
 	},
 
 	getBreakPos: function(input, wrap){
-		var breakPos = wrap;
-		var spacesIndex = input.substring(0, breakPos).indexOf(" ");
-		if(spacesIndex !== -1){
-			breakPos = spacesIndex; //shift wrap position
+		if(input[wrap] === " "){
+			return wrap;
 		}
-		return breakPos;
+		var breakPos = wrap;
+		var lastSpaceIndex = input.substring(0, wrap).lastIndexOf(" ");
+		if(lastSpaceIndex !== -1){
+			wrap = lastSpaceIndex ; //shift wrap position
+		}
+		return wrap;
 	}
 
 

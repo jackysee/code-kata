@@ -34,7 +34,14 @@ describe("wordwrap", function(){
 
 	it("should wrap at boundary", function() {
 		expect(WordWrap.wrap("word word", 4)).toBeDefined("word\nword");
+	});
 
+	it("should wrap at space", function() {
+		expect(WordWrap.wrap("word word word", 9)).toEqual("word word\nword");
+	});
+
+	it("should wrap at last space", function() {
+		expect(WordWrap.wrap("word word word", 10)).toEqual("word word\nword");
 	});
 
 });
