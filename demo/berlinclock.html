@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Berlin Clock</title>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="../src/berlinclock.js"></script>
+	<style>
+		body{
+			font-family: Verdana;
+		}
+		.berlin-clock{
+			text-align: center;
+			width: 150px;
+		}
+		.unit{
+			width: 30px;
+			height: 30px;
+			border:1px solid #ccc;
+			display: inline-block;
+		}
+		.unit:first-child{
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+		.unit:last-child{
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		.sec.unit{
+			width: 50px;
+			height: 50px;
+		}
+		.minute-top{
+			font-size:1px;
+		}
+		.minute-top .min.unit{
+			width: 7px;
+		}
+		.sec-row .unit.on{
+			background-color: yellow;
+		}
+		.hour-top .unit.on, .hour-bottom .unit.on{
+			background-color: red;
+		}
+		.minute-top .unit.on, .minute-bottom .unit.on{
+			background-color: yellow;
+		}
+		.minute-top .unit:nth-child(3).on,
+		.minute-top .unit:nth-child(6).on,
+		.minute-top .unit:nth-child(9).on{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Berlin Clock</h1>
+	<div class="berlin-clock">
+		<div class="sec-row">
+			<div class="sec unit"></div>
+		</div>
+		<div class="hour-top">
+			<div class="hour unit"></div>
+			<div class="hour unit"></div>
+			<div class="hour unit"></div>
+			<div class="hour unit"></div>
+		</div>
+		<div class="hour-bottom">
+			<div class="hour unit"></div>
+			<div class="hour unit"></div>
+			<div class="hour unit"></div>
+			<div class="hour unit"></div>
+		</div>
+		<div class="minute-top">
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+		</div>
+		<div class="minute-bottom">
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+			<div class="min unit"></div>
+		</div>
+	</div>
+	<script>
+		var el = $(".berlin-clock");
+		function updateClock(){
+			var renderer = {
+				render: function(viewModel){
+					for(key in this.renderMap){
+						var rowClass = this.renderMap[key];
+						this.toggleRowOn(el.find(rowClass), viewModel[key])
+					}
+				},
+				renderMap: {
+					'seconds': '.sec-row',
+					'minTop': '.minute-top',
+					'minBottom': '.minute-bottom',
+					'hoursTop': '.hour-top',
+					'hoursBottom': '.hour-bottom'
+				},
+				toggleRowOn: function(row, index){
+					row.find(".unit").removeClass("on")
+						.slice(0, index).addClass("on");
+				}
+			};
+			BerlinClock.render(getCurrentTime(), renderer);
+		}
+
+		function getCurrentTime(){
+			var d = new Date();
+			return d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+		}
+
+		var timer = setInterval(updateClock, 1000);
+	</script>
+</body>
+</html>
