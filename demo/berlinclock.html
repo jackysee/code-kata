@@ -30,6 +30,10 @@
 		.sec.unit{
 			width: 50px;
 			height: 50px;
+			border-radius: 25px;
+		}
+		.row{
+			margin: 5px 0;
 		}
 		.minute-top{
 			font-size:1px;
@@ -51,27 +55,29 @@
 		.minute-top .unit:nth-child(9).on{
 			background-color: red;
 		}
+		.ref{
+			font-size: 8px;
+		}
 	</style>
 </head>
 <body>
-	<h1>Berlin Clock</h1>
 	<div class="berlin-clock">
-		<div class="second-row">
+		<div class="second-row row">
 			<div class="sec unit"></div>
 		</div>
-		<div class="hour-top">
+		<div class="hour-top row">
 			<div class="hour unit"></div>
 			<div class="hour unit"></div>
 			<div class="hour unit"></div>
 			<div class="hour unit"></div>
 		</div>
-		<div class="hour-bottom">
+		<div class="hour-bottom row">
 			<div class="hour unit"></div>
 			<div class="hour unit"></div>
 			<div class="hour unit"></div>
 			<div class="hour unit"></div>
 		</div>
-		<div class="minute-top">
+		<div class="minute-top row">
 			<div class="min unit"></div>
 			<div class="min unit"></div>
 			<div class="min unit"></div>
@@ -84,12 +90,15 @@
 			<div class="min unit"></div>
 			<div class="min unit"></div>
 		</div>
-		<div class="minute-bottom">
+		<div class="minute-bottom row">
 			<div class="min unit"></div>
 			<div class="min unit"></div>
 			<div class="min unit"></div>
 			<div class="min unit"></div>
 		</div>
+	</div>
+	<div class="ref">
+		<a href="http://en.wikipedia.org/wiki/Mengenlehreuhr">Mengenlehreuhr (Berlin Clock)</a>
 	</div>
 	<script>
 		var el = $(".berlin-clock");
