@@ -60,39 +60,9 @@ var Potter = {
 			indexOfFive = combosStr.indexOf("5");
 			indexOfThree = combosStr.indexOf("3");
 		}
-		console.log('combostr', combosStr);
 		return combosStr.split("").map(function(count){
 			return parseInt(count, 10);
 		});
 	}
-
-
-
-	/*
-
-	[0, 1] ==> (1, 1, 0, 0, 0)
-
-	[0, 0, 1, 1, 2, 2, 3, 4]
-	==> (2, 2, 2, 1, 1)
-	==>
-	*	(1, 1, 1, 1, 1)
-		(1, 1, 1, 0, 0)
-
-	*	(1, 1, 1, 0, 0)
-		(1, 1, 1, 0, 0)
-		(0, 0, 0, 1, 1)
-
-	*	(1, 1, 1, 1, 0)
-		(1, 1, 1, 0, 1)
-
-	3, 2, 4, 2, 1
-	==>
-	1, 1, 1, 1, 1
-	1, 1, 1, 1, 0
-	1, 0, 1, 0, 0
-	0, 0, 1, 0, 0
-
-
-	 */
 
 };
